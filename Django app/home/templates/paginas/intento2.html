@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="es">
+    {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analisis de daño</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/shorthandcss@1.1.1/dist/shorthand.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli:200,300,400,500,600,700,800,900&display=swap" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css" />
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
+</head>
+
+<!--Estilos css-->
+<style>
+			.bd-placeholder-img {
+				font-size: 1.125rem;
+				text-anchor: middle;
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
+				user-select: none;
+			}
+
+			@media (min-width: 768px) {
+				.bd-placeholder-img-lg {
+					font-size: 3.5rem;
+				}
+			}
+
+			.container_2 {
+			background: lightgray;
+			margin: 0 0 1rem;
+			height: 10rem;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			}
+
+			.custom-input-file {
+			background-color: rgb(106, 105, 105);
+			color: #fff;
+			cursor: pointer;
+			font-size: 18px;
+			font-weight: bold;
+			margin: 0 auto 0;
+			min-height: 15px;
+			overflow: hidden;
+			padding: 10px;
+			position: relative;
+			text-align: center;
+			width: 256px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            margin-left: 14px;
+			}
+
+			.custom-input-file .input-file {
+			cursor: pointer;
+			margin: 0;
+			opacity: 0;
+			outline: 0 none;
+			padding: 0;
+			position: absolute;
+			text-align: center;
+			}
+
+			.custom-input-file:hover{background-color: blue;}
+			div.center {text-align: center;width: 500px;margin: 20px auto;}
+			div.w-33 {width: 100%;}
+            section.izquierda {text-align: justify;font-size: large;}
+
+            input {
+                font-size: large;
+                margin-top: 4px;
+                margin-bottom: 4px;
+            }
+
+            input[type="file" i] {
+                max-width: 100%;
+                color: #444;
+                padding: 5px;
+                background: #fff;
+                border-radius: 10px;
+                border: 1px solid #555;
+                display: hidden;
+            }
+
+            input[type="file"]::-webkit-file-upload-button {
+                visibility: hidden;
+                height: 1px;
+                width: 1px;
+            }
+
+            label {color: white;margin-top: 20px;margin-bottom: 20px;}
+            li {color: #18181a;font-size: 0cm;}
+
+            /*Efecto neon*/
+            .neonText {
+            color: #fff;
+            text-shadow:
+                0 0 42px #5271ff,
+                0 0 82px #5271ff,
+                0 0 92px #5271ff,
+                0 0 102px #5271ff,
+                0 0 151px #5271ff;
+            }
+
+            /*Color #5A4FC*/
+            a {color: #5271ff;}
+            .tamano {min-height: 85vh !important;}
+            .colorasul {background-color:#5A4FCF !important;}
+            #map{width: 350px;height: 350px;}
+</style>
+
+<body class="bg-black muli">
+    <nav class="w-100pc flex flex-column md-flex-row md-px-10 py-5 bg-black">
+        <div id="nav-items" class="hidden flex sm-w-100pc flex-column md-flex md-flex-row md-justify-end items-center">
+            <a href=".." class="fs-s1 mx-3 py-3 no-underline hover-underline">Inicio</a>
+            <a href="../admin/" class="fs-s1 mx-3 py-3 no-underline hover-underline">Ir a Django</a>
+            <a href="../datos/" class="fs-s1 mx-3 py-3 no-underline hover-underline">Gestionar</a>
+        </div>
+    </nav>
+
+    <section id="home" class="tamano flex justify-start items-center">
+        <div class="mx-1 md-mx-l9">
+            <div>
+                <h1 class="neonText white fs-l3 lh-2 md-fs-xl1 md-lh-1 fw-900">Análisis de daño vial</h1>
+                <div class="br-8 mt-10 inline-flex" style="align-items: center;">
+                    <a href="#Pasos"
+                    class="mt-5 button colorasul fs-s3 white no-underline hover-opacity-100 hover-scale-up-1 ease-300">Primer paso</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="Pasos" class="p-10 md-p-l5">
+        <div class="flex flex-column md-flex-row mx-auto">
+            <!--Paso 1-->
+            <div class="w-100pc md-w-40pc">
+                <div class="br-8 p-5 m-5">
+                    <h4 class="white fw-600 fs-m3 mb-5">Paso 1</h4>
+                    <div class="indigo-lightest fw-600 fs-m1 lh-3 opacity-50">Imagen del defecto:</div>
+                    <div class="custom-input-file">
+                        <input id="image-selector" class="input-file" type="file" accept="image/jpeg">Subir imagen
+                    </div>
+                    <img id="selected-image" class="ml-3" width="256px" height="256px" alt=""> 
+                </div>
+            </div>
+
+            <!--Paso 2-->
+            <div class="w-100pc md-w-40pc">
+                <div class="br-8 p-5 m-5">
+                    <h4 class="white fw-600 fs-m3 mb-5">Paso 2</h4>
+                    <div class="indigo-lightest fw-600 fs-m1 opacity-50">
+                        Analice con la Red Neuronal
+                        <button id="predict-button" class="mt-5 button colorasul fs-s3 white no-underline hover-opacity-100 hover-scale-up-1 ease-300">Analizar</button>
+                        <ol id="prediction-list"></ol>
+                    </div>
+                </div>
+            </div>
+
+            <!--Paso3-->
+            <div class="w-100pc md-w-40pc">
+                <div class="br-8 p-5 m-5">
+                    <h4 class="white fw-600 fs-m3 mb-5">Paso 3</h4>
+                    <div class="indigo-lightest fw-600 fs-m1 opacity-50">Ingrese la dirección de la falla.</div>
+                </div>
+                <div id="map"></div>
+                <input type="text" id="direccion" name="direccion" style="margin-top: 20px;">
+            </div>
+        </div>
+        <footer>
+            <div class="w-33">
+                <div class="center"><button class="button warning colorasul" id="grabar">Continuar</button></div>
+            </div>
+        </footer>
+    </section>
+
+    <section class="relative bg-indigo-lightest-10">
+        <div id="slider-1">
+            <div class="p-10 md-p-l10 flex justify-center items-center flex-column text-center">
+                <h2 class="white fs-l3 fw-900" id="focusme">Ultimo paso</h2>
+                <p class="indigo-lightest fw-600 fs-m1 opacity-30 my-5">Verifica la información, luego publíquela</p>
+                <section class="izquierda">
+                        <form method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {{ forms.as_p }}
+                            <div class="w-33"><div class="center"><button type="submit" class="button bg-indigo white fs-s3 br-4 black fw-600 no-underline m-5" id="publicar">¡Publicar!</button></div></div>
+                        </form>
+                </section>
+            </div>
+        </div>
+    </section>
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll@15.0.0/dist/smooth-scroll.polyfills.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <!--tensorflow.js-->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script>
+    <script src="{% static "modelo js/targets.js"%}"></script>
+    <script src="{% static "modelo js/prediccion.js"%}"></script>
+    <script src="{% static "modelo js/model.json"%}"></script>
+    
+    <!--Google maps-->
+    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAFhl4jUUKMmR_XCKiHSEZUU9Y4NgczGM&libraries=places&callback=initMap" defer></script>
+    <scripts src="{% static "js/maps.js"%}"></scripts>
+
+    <script type="text/javascript">
+    //Crear o iniciar MAPA
+    let mapa;
+    let completar;
+    function initMap() {
+        mapa = new google.maps.Map(document.getElementById("map"), {
+            center: { lat: -29.8923765, lng: -71.247334 }, //Calle El Encuentro
+            zoom: 15,
+            mapTypeId: "roadmap",
+        });
+
+        //Marcador 
+        marker = new google.maps.Marker({
+            map: mapa,
+            anchorPoint: new google.maps.Point(0, -29),
+            draggable: true,
+            position: { lat: -29.8923765, lng: -71.247334 },
+        });
+
+        //Autocompletado
+        completar = new google.maps.places.Autocomplete(document.getElementById("direccion"),
+        {
+            fields: ["place_id", "geometry" ,"name"],
+            componentRestrictions: {"country": ["cl"]}
+        });
+        google.maps.event.addListener(completar, "place_changed", function(){
+            var place = completar.getPlace();
+            if (!place.geometry){
+                return
+            }
+            if (place.geometry.viewport){
+                mapa.fitBounds(place.geometry.viewport);
+            } else {
+                mapa.setCenter(place.geometry.location);
+                mapa.setZoom(17);
+                
+            }
+            marker.setPosition(place.geometry.location);
+            marker.setVisible(true);
+        });
+
+    }
+    </script>
+
+    <!--Reunion de datos para transportarlos al form automaticamente luego de clic en el boton "siguiente paso"-->
+    <script type="text/javascript"> 
+        //Funcion clic del boton GRABAR
+        $("#grabar").click(async function () {
+
+        //Nombre de imagen
+        let n_imagen = document.getElementById("image-selector").files[0].name;
+        $("#id_nombre_imagen").val(n_imagen);
+
+        //Publicacion
+        let fecha = new Date();
+        let año = fecha.getFullYear();
+        let mes = fecha.getMonth() + 1;
+        let dia = fecha.getDate();
+        let hora = fecha.getHours();
+        let minuto = fecha.getMinutes();
+        if (minuto < 10){minuto = "0" + minuto}
+        let final = año+"/"+mes+"/"+dia+" "+hora+":"+minuto
+        $("#id_upload_to").val(final);
+        
+        //Resultado del analisis 
+        let resultao = document.getElementById("resultado2").innerHTML;
+        $("#id_resultado").val(resultao);
+
+        //Calle
+        let nombre_calle = $("#direccion").val();
+        $("#id_callefinal").val(nombre_calle);
+        });
+
+    </script>
+    <script type="text/javascript">
+        //Para transportar la imagen de un input al otro
+        $("#image-selector").change(function (){
+            const valor = document.getElementById("image-selector")
+            const file_input = document.querySelector("#id_imagen");
+            var archivo = valor.files[0]
+            const datatransfer = new DataTransfer();
+            datatransfer.items.add(archivo);
+            file_input.files = datatransfer.files;
+        });
+    </script>
+</body>
+</html>
