@@ -6,4 +6,4 @@ Algunas caracteristicas del sistema:
 -Como base de datos se utiliza PostgreSQL
 -Como Web Framework se utiliza Django
 -Tensorflow 2 para Redes Neuronales Convolucionales
--Dataset utilizada para el proyecto: https://mega.nz/file/LI40ybjb#t8UyRmSq7PZ7Kveh9YTh6V0t4X5D-y0JF5D5hNLr5Zs
+-Dataset de entrenamiento extraido de Kraggle + fotos reales de prueba: https://mega.nz/file/LI40ybjb#t8UyRmSq7PZ7Kveh9YTh6V0t4X5D-y0JF5D5hNLr5Zs
